@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Engines from 'components/Engines.svelte';
-	import Header from 'components/ui/Header.svelte';
-	import Page from 'components/ui/Page.svelte';
+	import Engines from 'src/components/Engines.svelte';
+	import Header from 'src/components/ui/Header.svelte';
+	import Page from 'src/components/ui/Page.svelte';
 </script>
 
 <Page>

@@ -2,10 +2,8 @@
 
 <style lang="scss">
 	.snowball-page {
-		background-color: $snowball-pewter;
 		color: $snowball-black;
-		width: 100vw;
-		min-height: 100vh;
 		display: inline-block;
+		padding: 1em 2em;
 	}
 </style>

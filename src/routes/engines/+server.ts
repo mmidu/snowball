@@ -4,7 +4,6 @@ import type { Engine } from 'src/lib/domain/Engine.js';
 import { isEngineConflict } from 'src/lib/domain/EngineConflict.js';
 import { getEngines } from 'src/lib/infrastructure/getEngines.js';
 
-/** @type {import('./$types').RequestHandler} */
 export const POST = async ({ request }) => {
 	const { name } = await request.json();
 	const result = await createEngine(name);

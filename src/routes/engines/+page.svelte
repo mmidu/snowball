@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '@smui/button';
-	import SubHeader from 'src/lib/components/ui/SubHeader.svelte';
+	import SubHeader from 'src/components/ui/SubHeader.svelte';
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
 	import { goto } from '$app/navigation';

@@ -1,4 +1,4 @@
-import type { RemoveEngine } from 'src/types/Engine';
+import type { RemoveEngine } from 'src/lib/domain/Engine';
 import fs from 'fs';
 import { ENGINES_DATA_PATH, getEnginesData } from './engines';
 

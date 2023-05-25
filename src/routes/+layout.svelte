@@ -1,6 +1,6 @@
 <script>
-	import Header from 'src/lib/components/ui/Header.svelte';
-	import Page from 'src/lib/components/ui/Page.svelte';
+	import Header from 'src/components/ui/Header.svelte';
+	import Page from 'src/components/ui/Page.svelte';
 </script>
 
 <div class="snowball-layout">

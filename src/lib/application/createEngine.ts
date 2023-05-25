@@ -1,5 +1,5 @@
-import type { Engine } from 'src/types/Engine';
-import { storeEngine } from 'src/lib/repository/storeEngine';
+import type { Engine } from 'src/lib/domain/Engine';
+import { storeEngine } from '../infrastructure/storeEngine';
 
 export const createEngine = async (name: string) => {
 	const engine: Engine = {

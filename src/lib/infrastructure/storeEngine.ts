@@ -1,6 +1,7 @@
-import { makeEngineConflict, type Engine, type StoreEngine } from 'src/types/Engine';
+import type { Engine, StoreEngine } from 'src/lib/domain/Engine';
 import fs from 'fs';
 import { ENGINES_DATA_PATH, getEnginesData } from './engines';
+import { makeEngineConflict } from '../domain/EngineConflict';
 
 export const storeEngine: StoreEngine = async (engine: Engine) => {
 	const engines = getEnginesData();

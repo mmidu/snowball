@@ -1,6 +1,6 @@
-import { getEngine } from 'src/lib/repository/getEngine.js';
-import { removeEngine } from 'src/lib/repository/removeEngine.js';
-import type { Engine } from 'src/types/Engine.js';
+import type { Engine } from 'src/lib/domain/Engine.js';
+import { getEngine } from 'src/lib/infrastructure/getEngine.js';
+import { removeEngine } from 'src/lib/infrastructure/removeEngine.js';
 
 export const DELETE = async ({ params }) => {
 	const { id } = params;

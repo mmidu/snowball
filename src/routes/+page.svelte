@@ -1,11 +1,14 @@
 <script lang="ts">
 	import Button from '@smui/button';
-	import Engines from 'src/lib/components/Engines.svelte';
-	import SubHeader from 'src/lib/components/ui/SubHeader.svelte';
-	import type { Engine } from 'src/types/Engine';
+	import Engines from 'src/components/Engines.svelte';
+	import SubHeader from 'src/components/ui/SubHeader.svelte';
+	import type { Engine } from 'src/lib/domain/Engine';
 	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
 
-	let engines: Engine[] = [];
+	//let engines: Record<string, Engine> = {};
+
+	let engines = writable<Record<string, Engine>>({});
 
 	const getEngines = async () => {
 		const response = await fetch('/engines', {
@@ -14,7 +17,15 @@
 				'content-type': 'applycation/json'
 			}
 		});
-		engines = await response.json();
+		engines.set(await response.json());
+	};
+
+	const removeEngine = async (id: string) => {
+		await fetch(`/engines/${id}`, { method: 'DELETE' });
+		engines.update((_engines) => {
+			delete _engines[id];
+			return _engines;
+		});
 	};
 
 	onMount(() => getEngines());
@@ -26,5 +37,5 @@
 	</Button>
 </SubHeader>
 <section>
-	<Engines {engines} />
+	<Engines engines={$engines} {removeEngine} />
 </section>

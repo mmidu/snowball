@@ -1,5 +1,5 @@
 import fs from 'fs';
-import type { Engine } from 'src/types/Engine';
+import type { Engine } from 'src/lib/domain/Engine';
 
 export const ENGINES_DATA_PATH = './data/engines.json';
 

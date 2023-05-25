@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import Textfield from '@smui/textfield';
+	import HelperText from '@smui/textfield/helper-text';
 	import Button from '@smui/button';
-	import SubHeader from 'src/lib/components/ui/SubHeader.svelte';
-	import type { Engine } from 'src/types/Engine';
 	import { onMount } from 'svelte';
+	import SubHeader from 'src/components/ui/SubHeader.svelte';
+	import type { Engine } from 'src/lib/domain/Engine';
 
 	export let engine: Engine = {
 		id: '',
@@ -20,10 +22,10 @@
 
 <h1>{engine.name}</h1>
 
-<SubHeader title="Edit Engine">
+<SubHeader title="New Engine">
 	<Button variant="raised" href="/">
 		<i class="material-icons" aria-hidden="true">arrow_back</i>
 	</Button>
 </SubHeader>
 
-<a href="/">Done!</a>
+<Button on:click={() => alert('done')}>Done!</Button>

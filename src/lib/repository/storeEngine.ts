@@ -1,15 +1,14 @@
 import { makeEngineConflict, type Engine, type StoreEngine } from 'src/types/Engine';
 import fs from 'fs';
-import storedEngines from './engines.json';
-
-const engines = storedEngines as Engine[];
+import { ENGINES_DATA_PATH, getEnginesData } from './engines';
 
 export const storeEngine: StoreEngine = async (engine: Engine) => {
-	if (engines.filter((_engine) => _engine.name === engine.name).length !== 0)
+	const engines = getEnginesData();
+	if (Object.entries(engines).filter(([_, _engine]) => _engine.name === engine.name).length !== 0)
 		return makeEngineConflict();
 
-	engines.push(engine);
+	engines[engine.id] = engine;
 
-	fs.writeFileSync('./src/lib/repository/engines.json', JSON.stringify(engines));
+	fs.writeFileSync(ENGINES_DATA_PATH, JSON.stringify(engines));
 	return engine;
 };

@@ -1,7 +1,9 @@
-import storedEngines from './engines.json';
+import type { RemoveEngine } from 'src/types/Engine';
 import fs from 'fs';
+import { ENGINES_DATA_PATH, getEnginesData } from './engines';
 
-export const removeEngine = async (id: string) => {
-	const engines = storedEngines.filter((engine) => engine.id !== id);
-	fs.writeFileSync('./src/lib/repository/engines.json', JSON.stringify(engines));
+export const removeEngine: RemoveEngine = (id: string) => {
+	const engines = getEnginesData();
+	delete engines[id];
+	fs.writeFileSync(ENGINES_DATA_PATH, JSON.stringify(engines));
 };

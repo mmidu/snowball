@@ -10,7 +10,7 @@
 
 <Card padded>
 	<Actions fullBleed>
-		<IconButton class="material-icons" on:click={() => alert(engine.id)}>polyline</IconButton>
+		<a href={`/engines/${engine.id}`}><i class="material-icons">polyline</i></a>
 		<IconButton class="material-icons" on:click={() => removeEngine(engine.id)}>remove</IconButton>
 	</Actions>
 	<Content>{engine.name}</Content>

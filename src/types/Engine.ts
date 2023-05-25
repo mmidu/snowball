@@ -20,3 +20,7 @@ export const makeEngineConflict = (): EngineConflict => ({ message: 'engine conf
 export type StoreEngine = (engine: Engine) => Promise<Engine | EngineConflict>;
 
 export type GetEngines = () => Engine[];
+
+export type GetEngine = (id: string) => Engine;
+
+export type RemoveEngine = (id: string) => void;

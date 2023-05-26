@@ -2,6 +2,8 @@
 	import Card from '@smui/card/src/Card.svelte';
 	import type { Rule } from 'src/lib/domain/Rule';
 	import Textfield from '@smui/textfield';
+	import Select, { Option } from '@smui/select';
+
 	import Button from '@smui/button';
 	//import Select, { Option } from '@smui/select';
 	import HelperText from '@smui/textfield/helper-text';
@@ -18,37 +20,56 @@
 
 	const operators: string[] = ['AND', 'OR'];*/
 	const operands = writable<string[]>([]);
+	const firstOperand = writable<string>();
+	const secondOperand = writable<string>();
+	const comparators = {
+		gt: 'GREATER THAN',
+		gte: 'GREATER THAN OR EQUAL TO',
+		lt: 'LESS THAN',
+		lte: 'LESS THAN OR EQUAL TO',
+		contains: 'CONTAINS',
+		in: 'IN'
+	};
+
+	const comparator = writable<string>();
 </script>
 
 <div class="rule" data-testid="rule">
 	<Card padded>
 		<div>
-			{#each $operands as operand}
+			{#if $firstOperand != undefined}
 				<Operand />
-			{/each}
+			{/if}
 		</div>
-		<Button
-			disabled={$operands.length >= 2}
-			on:click={() => operands.update((_operands) => [..._operands, ''])}>Add Operand</Button
-		>
+		{#if $firstOperand == undefined}
+			<Button on:click={() => firstOperand.set('')}>Configure</Button>
+		{/if}
+		{#if $firstOperand != undefined}
+			<Select
+				variant="outlined"
+				class="comparator-selector"
+				label="Comparator"
+				bind:value={$comparator}
+			>
+				{#each Object.entries(comparators) as [key, displayName]}
+					<Option value={key} class="operand-kind-option">{displayName}</Option>
+				{/each}
+			</Select>
+			{#if $comparator && $secondOperand == undefined}
+				<Button on:click={() => secondOperand.set('')}>Add Operand</Button>
+			{/if}
+		{/if}
+		<div>
+			{#if $secondOperand != undefined}
+				<Operand />
+			{/if}
+		</div>
 	</Card>
-	<!-- <Card padded>
-		<Textfield bind:value={$_rule.firstOperand} label="First Operand">
-			<HelperText slot="helper">First Operand name</HelperText>
-		</Textfield>
-		<select bind:value={$_rule.operator}>
-			{#each operators as operatorOption}
-				<option value={operatorOption}>{operatorOption}</option>
-			{/each}
-		</select>
-		<Textfield bind:value={$_rule.secondOperand} label="Second Operand">
-			<HelperText slot="helper">Second Operand name</HelperText>
-		</Textfield>
-	</Card> -->
 </div>
 
 <style lang="scss">
 	.rule {
-		margin: 1em 0;
+		margin: 1em;
+		display: inline-block;
 	}
 </style>

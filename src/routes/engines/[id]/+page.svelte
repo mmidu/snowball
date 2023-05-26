@@ -47,7 +47,7 @@
 </SubHeader>
 
 <section>
-	<div class="rules-container">
+	<div>
 		{#each $rules as rule, index}
 			<RuleCard {rule} {index} updateEngine={updateEngine($page.params.id)} />
 		{/each}
@@ -66,9 +66,3 @@
 </section>
 
 <Button on:click={() => alert('done')}>Done!</Button>
-
-<style lang="scss">
-	.rules-container {
-		padding: 2em 0;
-	}
-</style>

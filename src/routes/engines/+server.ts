@@ -4,7 +4,7 @@ import type { Engine } from 'src/lib/domain/Engine.js';
 import { isEngineConflict } from 'src/lib/domain/EngineConflict.js';
 import { getEngines } from 'src/lib/infrastructure/getEngines.js';
 
-export const POST = async ({ request }) => {
+export const POST = async ({ request }: { request: any }) => {
 	const { name } = await request.json();
 	const result = await createEngine(name);
 	if (isEngineConflict(result)) throw error(409);

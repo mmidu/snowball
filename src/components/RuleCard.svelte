@@ -17,7 +17,7 @@
 	const operators: string[] = ['AND', 'OR'];
 </script>
 
-<div class="rule">
+<div class="rule" data-testid="rule">
 	<Card padded>
 		<Textfield bind:value={$_rule.firstOperand} label="First Operand">
 			<HelperText slot="helper">First Operand name</HelperText>

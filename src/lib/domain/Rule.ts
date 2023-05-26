@@ -5,3 +5,5 @@ export type Rule = {
 };
 
 type Operator = 'AND' | 'OR';
+
+export type OperandKind = 'variable' | 'constant' | 'list';

@@ -5,7 +5,7 @@
 	import SubHeader from 'src/components/ui/SubHeader.svelte';
 	import type { Engine } from 'src/lib/domain/Engine';
 	import { writable } from 'svelte/store';
-	import RuleCard from 'src/components/RuleCard.svelte';
+	import RuleCard from 'src/components/RuleCard/RuleCard.svelte';
 	import type { Rule } from 'src/lib/domain/Rule';
 
 	let engine: Engine = {
